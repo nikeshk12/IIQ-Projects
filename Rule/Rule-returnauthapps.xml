@@ -1,0 +1,25 @@
+//Task 23
+//This task will return only the names of application that are authoritative
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule created="1564349609211" id="402881096c3987ce016c3a80b4fb0023" language="beanshell" modified="1564357303252" name="Task 23">
+  <Description>This rule is only for testing.</Description>
+  <Source>
+  import sailpoint.object.Application;
+  import sailpoint.object.Identity;
+  import java.util.List;
+  import java.util.ArrayList;
+  
+  List apps = context.getObjects(Application.class);
+  List list = new ArrayList();
+  for (Application app:apps){
+    boolean result = app.isAuthoritative();
+    if(result==true){
+      String apname = app.getName();
+      list.add(apname);
+      }
+  }
+  
+ 	return list;
+  </Source>
+</Rule>
