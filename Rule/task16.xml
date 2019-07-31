@@ -2,29 +2,36 @@
 //This rule returns the assigned role and detected role of an identity(object)
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
-<Rule created="1564519720983" id="402881a56c3e877a016c44a468170065" language="beanshell" modified="1564604350880" name="Task 16">
+<Rule created="1564519720983" id="402881a56c3e877a016c44a468170065" language="beanshell" modified="1564605339506" name="Task 16">
   <Description>This rule returns all the assigned and detected roles of an identity. </Description>
   <Source>
-  	import sailpoint.object.Identity;
-		import sailpoint.object.Assignment;
-  	import sailpoint.object.RoleAssignment;
-  	import java.util.List;
-  	import java.util.ArrayList;
-  	import java.util.Map;
-  	import java.util.HashMap;
-  	import sailpoint.object.Bundle;
+    import sailpoint.object.Identity;
+    import sailpoint.object.Assignment;
+    import sailpoint.object.RoleAssignment;
+    import java.util.List;
+    import java.util.ArrayList;
+    import java.util.Map;
+    import java.util.HashMap;
+    import sailpoint.object.Bundle;
  
-  	
-  	List list = new ArrayList();
-  	List li = new ArrayList();
-  	Identity iden = context.getObjectByName(Identity.class, "rohit.shah");
-  	List list = iden.getAssignedRoles();
-  	li.add(list);
-  	List lis = iden.getDetectedRoles();
-  	li.add(lis);
-  	return li;
     
+    List list = new ArrayList();
+    Identity iden = context.getObjectByName(Identity.class, "abhisek.paudel");
+    List list = iden.getAssignedRoles();
   
+    HashMap map = new HashMap();
+  
+  for( Bundle bun: list){
+   String name = bun.getDisplayableName();
+    map.put("Assigned Role", name);
+  }
+     List lis = iden.getDetectedRoles();
+  for(Bundle bun:lis){
+    String name = bun.getDisplayableName();
+    map.put("Detected Role", name);
+  }
+  return map;
   </Source>
 </Rule>
+
 
