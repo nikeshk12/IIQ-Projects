@@ -1,0 +1,24 @@
+//Task 15
+//This rule returns all the wrkflows which has type LCMProvisioning
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule created="1564514195558" id="402881a56c3e877a016c44501866005e" language="beanshell" modified="1564616472073" name="Task 15">
+  <Description>This rule returns all the workflows which has type LCMProvisioning.</Description>
+  <Source>
+  import sailpoint.object.Workflow;
+  import java.util.List;
+  import java.util.ArrayList;
+  
+ 		List wflows = context.getObjects(Workflow.class);
+  	List list = new ArrayList();
+  
+  for(Workflow wflow:wflows){
+    String name = wflow.getType();
+    if (name.equals("LCMProvisioning")){
+      list.add(wflow);
+    }else{}
+  }
+	return list;
+  
+  </Source>
+</Rule>
