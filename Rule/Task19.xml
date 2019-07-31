@@ -1,0 +1,25 @@
+//task 19
+//This rule will return the owner and secription of entitlements
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule created="1564609457623" id="402881a56c49838a016c49fdadd70011" language="beanshell" modified="1564609772189" name="Task 19">
+  <Description>This rule return the owner and description of entitlements</Description>
+  <Source>
+  import sailpoint.object.ManagedAttribute;
+  import java.util.List;
+  import java.util.ArrayList;
+  
+  List mans = context.getObjects(ManagedAttribute.class);
+  
+  List list = new ArrayList();
+  for(ManagedAttribute man: mans){
+   String descr = man.getDescription();
+    list.add(descr);
+   String own = man.getOwner();
+    list.add(own);
+    
+  }
+ return list;
+  </Source>
+</Rule>
+
