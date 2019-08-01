@@ -1,0 +1,32 @@
+//Task 18
+//This will return all entititlements that are requestable.
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule created="1564635760252" id="402881a56c49838a016c4b8f067c0197" language="beanshell" modified="1564636327308" name="Task 18">
+  <Source>
+  import java.util.List;
+  import java.util.ArrayList;
+  import sailpoint.object.Identity;
+  import sailpoint.object.ManagedAttribute; 
+  import org.apache.log4j.Logger;
+  
+  	Logger log = Logger.getLogger("dexperts.us");
+  
+  	List mans = context.getObjects(ManagedAttribute.class);
+  	List li = new ArrayList();
+  
+  	
+  
+  for(ManagedAttribute man:mans){
+    boolean result = man.isRequestable();
+    log.info(result);
+    if(result==true){
+      String name = man.getDisplayableName();
+      log.info(name);
+      li.add(name);
+    }else{}
+  }
+
+  return li;
+  </Source>
+</Rule>
